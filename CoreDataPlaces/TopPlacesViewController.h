@@ -14,6 +14,9 @@
     @private
     FlickrTopPlaces *topPlaces;
 }
+- (id)initWithStyle:(UITableViewStyle)style inManagedObjectContext: (NSManagedObjectContext *) managedObjectContext;
 
 @property (retain, nonatomic) FlickrTopPlaces *topPlaces;
+@property (retain) NSManagedObjectContext *managedObjectContext;
+
 @end

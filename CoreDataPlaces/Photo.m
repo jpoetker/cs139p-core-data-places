@@ -18,6 +18,7 @@
 @dynamic lastViewed;
 @dynamic thumbnailURL;
 @dynamic title;
+@dynamic uniqueId;
 @dynamic place;
 
 @end

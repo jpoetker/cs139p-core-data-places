@@ -11,10 +11,10 @@
 
 @interface FlickrPhotosTableViewController : UITableViewController
 {
-    FlickrPhotos *photos;
+    FlickrPlacePhotos *photos;
 }
-- (id)initWithPhotos: (FlickrPhotos *)somePhotos;
+- (id)initWithPhotos: (FlickrPlacePhotos *)somePhotos inManagedObjectContext: (NSManagedObjectContext *) managedObjectContext;
 
-@property (nonatomic, retain) FlickrPhotos *photos;
-
+@property (nonatomic, retain) FlickrPlacePhotos *photos;
+@property (retain) NSManagedObjectContext *managedObjectContext;
 @end

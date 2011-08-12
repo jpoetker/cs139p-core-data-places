@@ -18,11 +18,13 @@
 - (NSUInteger) count;
 - (id) photoAtIndex: (NSUInteger) index;
 
-
++ (NSString *) uniqueIdForPhoto: (id) photo;
 + (NSString *) titleForPhoto: (id) photo;
 + (NSString *) descriptionForPhoto: (id) photo;
 + (UIImage *) squareThumbnailForPhoto: (id) photo;
++ (NSString *) squareThumbnailURLForPhoto: (id) photo;
 + (UIImage *) largeImageForPhoto: (id)photo;
++ (NSString *) largeImageURLForPhoto: (id) photo;
 //+ (void) savePhotoAsViewed: (id) photo;
 //+ (FlickrPhotos *) photosRecentlyViewed;
 @end

@@ -12,6 +12,7 @@
 
 @interface FlickrPhotos() 
 + (NSDictionary *) castToDictionaryOrNil: (id) photo;
++ (NSString *) property: (NSString *) photoProperty of: (id) photo;
 //+ (NSMutableArray *) loadRecentlyViewedPhotos;
 @end
 
@@ -96,10 +97,19 @@
     }
     return nil;
 }
++ (NSString *) property:(NSString *)photoProperty of:(id)photo
+{
+    return [[FlickrPhotos castToDictionaryOrNil:photo] valueForKey:photoProperty];
+}
+
++ (NSString *) uniqueIdForPhoto:(id)photo
+{
+    return [FlickrPhotos property: @"id" of: photo];
+}
 
 + (NSString *) titleForPhoto:(id)photo
 {
-    return [[FlickrPhotos castToDictionaryOrNil: photo] valueForKey:@"title"];
+    return [FlickrPhotos property: @"title" of: photo];
 }
 
 + (NSString *)descriptionForPhoto:(id)photo
@@ -115,11 +125,21 @@
     
     return image;
 }
+
++ (NSString *) squareThumbnailURLForPhoto: (id) photo
+{
+    return [FlickrFetcher urlStringForPhotoWithFlickrInfo: [FlickrPhotos castToDictionaryOrNil: photo]
+                                                   format: FlickrFetcherPhotoFormatSquare];
+}
 + (UIImage *)largeImageForPhoto: (id)photo
 {
     return [[[UIImage alloc] initWithData: [FlickrFetcher imageDataForPhotoWithFlickrInfo:[FlickrPhotos castToDictionaryOrNil: photo] format:FlickrFetcherPhotoFormatLarge]] autorelease];
 }
-
++ (NSString *) largeImageURLForPhoto: (id) photo
+{
+    return [FlickrFetcher urlStringForPhotoWithFlickrInfo: [FlickrPhotos castToDictionaryOrNil: photo]
+                                                   format: FlickrFetcherPhotoFormatLarge];
+}
 @end
 
 

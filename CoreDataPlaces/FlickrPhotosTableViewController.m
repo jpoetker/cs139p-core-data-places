@@ -8,30 +8,25 @@
 
 #import "FlickrPhotosTableViewController.h"
 #import "FlickrPhotos.h"
+#import "FlickrPhotos+FlickrPhotos_Photo.h"
 
 @implementation FlickrPhotosTableViewController
 
 @synthesize photos;
+@synthesize managedObjectContext = __managedObjectContext;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        self.photos = nil;
-    }
-    return self;
-}
 
-- (id)initWithPhotos: (FlickrPhotos *)somePhotos
+- (id)initWithPhotos: (FlickrPlacePhotos *)somePhotos inManagedObjectContext: (NSManagedObjectContext *) managedObjectContext
 {
-    self = [self initWithStyle:UITableViewStylePlain];
+    self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
         self.photos = somePhotos;
+        self.managedObjectContext = managedObjectContext;
     }
     return self;
 }
 
--(void)setPhotos:(FlickrPhotos *)somePhotos  
+-(void)setPhotos:(FlickrPlacePhotos *)somePhotos  
 {
     [photos release];
     photos = [somePhotos retain];
@@ -183,14 +178,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    id flickrPhoto = [photos photoAtIndex:indexPath.row];
+    
+    Photo *photo = [FlickrPhotos photoForFlickrPhoto:flickrPhoto
+                                             takenAt:photos.place
+                              inManagedObjectContext:self.managedObjectContext];
+    
+    // TODO
+    // Next move in the photo view controller, modified it to work on a phote
+    // pass the photo, push it onto the navigation controller
+    
+    
 }
 
+- (void) dealloc 
+{
+    [photos release];
+    [__managedObjectContext release];
+    [super dealloc];
+}
 @end

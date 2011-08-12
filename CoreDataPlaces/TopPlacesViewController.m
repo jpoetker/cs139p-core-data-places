@@ -13,6 +13,7 @@
 @implementation TopPlacesViewController
 
 @synthesize topPlaces;
+@synthesize managedObjectContext = __managedObjectContext;
 
 - (void) setup
 {
@@ -25,11 +26,12 @@
     [tabItem release];
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithStyle:(UITableViewStyle)style inManagedObjectContext: (NSManagedObjectContext *) managedObjectContext
 {
     self = [super initWithStyle:style];
     if (self) {
         [self setup];
+        self.managedObjectContext = managedObjectContext;
     }
     return self;
 }
@@ -170,8 +172,11 @@
 {
     // Navigation logic may go here. Create and push another view controller.
     
+    FlickrPlacePhotos *somePhotos = [topPlaces photosForPlaceAtIndex: indexPath.row];
     FlickrPhotosTableViewController *photosController = [[FlickrPhotosTableViewController alloc] 
-                                                   initWithPhotos:[topPlaces photosForPlaceAtIndex: indexPath.row]];
+                                                         initWithPhotos: somePhotos 
+                                                         inManagedObjectContext:self.managedObjectContext];
+    
     photosController.title = [FlickrTopPlaces cityFromPlace:[topPlaces placeAtIndex:indexPath.row]];
     [self.navigationController pushViewController:photosController animated:YES];
     [photosController release];    
@@ -185,6 +190,7 @@
 -(void) dealloc
 {
     [topPlaces release];
+    [__managedObjectContext release];
     [super dealloc];
 }
 

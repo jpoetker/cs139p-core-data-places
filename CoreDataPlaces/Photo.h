@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSDate * lastViewed;
 @property (nonatomic, retain) NSString * thumbnailURL;
 @property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSString * uniqueId;
 @property (nonatomic, retain) Place *place;
 
 @end
