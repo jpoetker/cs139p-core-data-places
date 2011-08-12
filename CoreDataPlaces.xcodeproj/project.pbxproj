@@ -37,18 +37,18 @@
 		7E34F08813F58D4900F35FB1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7E34F08A13F58D4900F35FB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7E34F08C13F58D4900F35FB1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		7E34F09013F58D4900F35FB1 /* CoreDataPlaces-Info.plist */ = {isa = PBXFileReference; path = "CoreDataPlaces-Info.plist"; sourceTree = "<group>"; };
+		7E34F09013F58D4900F35FB1 /* CoreDataPlaces-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CoreDataPlaces-Info.plist"; sourceTree = "<group>"; };
 		7E34F09213F58D4900F35FB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E34F09413F58D4900F35FB1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7E34F09613F58D4900F35FB1 /* CoreDataPlaces-Prefix.pch */ = {isa = PBXFileReference; path = "CoreDataPlaces-Prefix.pch"; sourceTree = "<group>"; };
-		7E34F09713F58D4900F35FB1 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		7E34F09613F58D4900F35FB1 /* CoreDataPlaces-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CoreDataPlaces-Prefix.pch"; sourceTree = "<group>"; };
+		7E34F09713F58D4900F35FB1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7E34F09813F58D4900F35FB1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7E34F09B13F58D4900F35FB1 /* CoreDataPlaces.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataPlaces.xcdatamodel; sourceTree = "<group>"; };
 		7E34F0A213F58D4900F35FB1 /* CoreDataPlacesTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataPlacesTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E34F0A313F58D4900F35FB1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		7E34F0AC13F58D4900F35FB1 /* CoreDataPlacesTests-Info.plist */ = {isa = PBXFileReference; path = "CoreDataPlacesTests-Info.plist"; sourceTree = "<group>"; };
+		7E34F0AC13F58D4900F35FB1 /* CoreDataPlacesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CoreDataPlacesTests-Info.plist"; sourceTree = "<group>"; };
 		7E34F0AE13F58D4900F35FB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7E34F0B013F58D4900F35FB1 /* CoreDataPlacesTests.h */ = {isa = PBXFileReference; path = CoreDataPlacesTests.h; sourceTree = "<group>"; };
+		7E34F0B013F58D4900F35FB1 /* CoreDataPlacesTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataPlacesTests.h; sourceTree = "<group>"; };
 		7E34F0B113F58D4900F35FB1 /* CoreDataPlacesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataPlacesTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -318,7 +318,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -337,7 +337,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -348,6 +348,7 @@
 		7E34F0B613F58D4900F35FB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoreDataPlaces/CoreDataPlaces-Prefix.pch";
 				INFOPLIST_FILE = "CoreDataPlaces/CoreDataPlaces-Info.plist";
@@ -359,6 +360,7 @@
 		7E34F0B713F58D4900F35FB1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoreDataPlaces/CoreDataPlaces-Prefix.pch";
 				INFOPLIST_FILE = "CoreDataPlaces/CoreDataPlaces-Info.plist";
@@ -371,6 +373,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CoreDataPlaces.app/CoreDataPlaces";
+				CLANG_ENABLE_OBJC_ARC = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
@@ -388,6 +391,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CoreDataPlaces.app/CoreDataPlaces";
+				CLANG_ENABLE_OBJC_ARC = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
