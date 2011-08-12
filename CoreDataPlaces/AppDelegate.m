@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "TopPlacesViewController.h"
 
 @implementation AppDelegate
 
@@ -20,6 +21,28 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    // Configure Top Places View Controller and ui nave controller
+    TopPlacesViewController *topPlaces = [[TopPlacesViewController alloc] initWithStyle: UITableViewStylePlain];
+    UINavigationController *placesNavController = [[UINavigationController alloc] init];
+    [placesNavController pushViewController: topPlaces animated: NO];
+    [topPlaces release];
+    
+    // Recent
+    
+    
+    // Favorites
+    
+    // Tab Bar Controller
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    tabBarController.viewControllers = [NSArray arrayWithObjects:placesNavController, nil];
+    
+    [placesNavController release];
+
+    
+    self.window.rootViewController = tabBarController;
+    [tabBarController release];
+
     [self.window makeKeyAndVisible];
     return YES;
 }

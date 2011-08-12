@@ -28,6 +28,10 @@
 		7E34F0D113F58F2F00F35FB1 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E34F0C913F58F2F00F35FB1 /* SBJsonParser.m */; };
 		7E34F0D213F58F2F00F35FB1 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E34F0CB13F58F2F00F35FB1 /* SBJsonWriter.m */; };
 		7E34F0D513F5901100F35FB1 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E34F0D413F5901100F35FB1 /* CoreDataTableViewController.m */; };
+		7E34F0DC13F5946E00F35FB1 /* TopPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E34F0DB13F5946E00F35FB1 /* TopPlacesViewController.m */; };
+		7E34F0DF13F594B300F35FB1 /* FlickrTopPlaces.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E34F0DE13F594B300F35FB1 /* FlickrTopPlaces.m */; };
+		7E34F0E213F59B3F00F35FB1 /* FlickrPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E34F0E113F59B3F00F35FB1 /* FlickrPhotos.m */; };
+		7E34F0E513F5A14200F35FB1 /* FlickrPhotosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E34F0E413F5A14200F35FB1 /* FlickrPhotosTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +80,14 @@
 		7E34F0CB13F58F2F00F35FB1 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		7E34F0D313F5901100F35FB1 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
 		7E34F0D413F5901100F35FB1 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
+		7E34F0DA13F5946E00F35FB1 /* TopPlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopPlacesViewController.h; sourceTree = "<group>"; };
+		7E34F0DB13F5946E00F35FB1 /* TopPlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopPlacesViewController.m; sourceTree = "<group>"; };
+		7E34F0DD13F594B300F35FB1 /* FlickrTopPlaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrTopPlaces.h; sourceTree = "<group>"; };
+		7E34F0DE13F594B300F35FB1 /* FlickrTopPlaces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrTopPlaces.m; sourceTree = "<group>"; };
+		7E34F0E013F59B3F00F35FB1 /* FlickrPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPhotos.h; sourceTree = "<group>"; };
+		7E34F0E113F59B3F00F35FB1 /* FlickrPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhotos.m; sourceTree = "<group>"; };
+		7E34F0E313F5A14200F35FB1 /* FlickrPhotosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPhotosTableViewController.h; sourceTree = "<group>"; };
+		7E34F0E413F5A14200F35FB1 /* FlickrPhotosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhotosTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +151,14 @@
 				7E34F09713F58D4900F35FB1 /* AppDelegate.h */,
 				7E34F09813F58D4900F35FB1 /* AppDelegate.m */,
 				7E34F09A13F58D4900F35FB1 /* CoreDataPlaces.xcdatamodeld */,
+				7E34F0DD13F594B300F35FB1 /* FlickrTopPlaces.h */,
+				7E34F0DE13F594B300F35FB1 /* FlickrTopPlaces.m */,
+				7E34F0E013F59B3F00F35FB1 /* FlickrPhotos.h */,
+				7E34F0E113F59B3F00F35FB1 /* FlickrPhotos.m */,
+				7E34F0E313F5A14200F35FB1 /* FlickrPhotosTableViewController.h */,
+				7E34F0E413F5A14200F35FB1 /* FlickrPhotosTableViewController.m */,
+				7E34F0DA13F5946E00F35FB1 /* TopPlacesViewController.h */,
+				7E34F0DB13F5946E00F35FB1 /* TopPlacesViewController.m */,
 				7E34F08F13F58D4900F35FB1 /* Supporting Files */,
 			);
 			path = CoreDataPlaces;
@@ -317,6 +337,10 @@
 				7E34F0D113F58F2F00F35FB1 /* SBJsonParser.m in Sources */,
 				7E34F0D213F58F2F00F35FB1 /* SBJsonWriter.m in Sources */,
 				7E34F0D513F5901100F35FB1 /* CoreDataTableViewController.m in Sources */,
+				7E34F0DC13F5946E00F35FB1 /* TopPlacesViewController.m in Sources */,
+				7E34F0DF13F594B300F35FB1 /* FlickrTopPlaces.m in Sources */,
+				7E34F0E213F59B3F00F35FB1 /* FlickrPhotos.m in Sources */,
+				7E34F0E513F5A14200F35FB1 /* FlickrPhotosTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
