@@ -11,5 +11,6 @@
 @interface Photo (FlickrFetcher)
 
 - (UIImage *) largeImage;
+- (UIImage *) thumbnailImage;
 
 @end

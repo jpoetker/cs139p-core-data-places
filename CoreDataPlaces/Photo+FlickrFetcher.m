@@ -18,4 +18,11 @@
     return [UIImage imageWithData:imageData];
 }
 
+- (UIImage *) thumbnailImage
+{
+    //    NSLog(@"%@", self);
+    NSData *imageData = [FlickrFetcher imageDataForPhotoWithURLString: self.thumbnailURL];
+    return [UIImage imageWithData:imageData];
+}
+
 @end
