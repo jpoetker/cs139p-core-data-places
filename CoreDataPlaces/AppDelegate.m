@@ -32,11 +32,20 @@
     [topPlaces release];
     
     // Recent
+    NSDate *threshold = [[NSDate date] dateByAddingTimeInterval: -48 * 60 * 60];
+    NSLog(@"Theshold: %@", threshold);
+    
+    NSPredicate *recentPhotosPredicate = [NSPredicate predicateWithFormat:@"lastViewed > %@", threshold];
+    NSSortDescriptor *recentlyViewed = [[NSSortDescriptor alloc] initWithKey: @"lastViewed" 
+                                                                   ascending:NO];
     
     PhotosTableViewController *recentPhotosTVC = [[PhotosTableViewController alloc] 
-                                                  initWithPhotoPredicate:nil 
-                                                  withSortDescriptor:nil 
+                                                  initWithPhotoPredicate: recentPhotosPredicate 
+                                                  withSortDescriptor: [NSArray arrayWithObject: recentlyViewed] 
                                                   inManagedObjectContext:self.managedObjectContext];
+    
+    [recentlyViewed release];
+    
     tabItem = [[UITabBarItem alloc] initWithTabBarSystemItem: UITabBarSystemItemMostRecent tag: 0];
     recentPhotosTVC.tabBarItem = tabItem;
     recentPhotosTVC.title = @"Most Recent";
