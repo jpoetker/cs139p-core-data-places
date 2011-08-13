@@ -8,7 +8,7 @@
 
 #import "PhotosTableViewController.h"
 #import "PhotoViewController.h"
-#import "Photo.h";
+#import "Photo.h"
 #import "Photo+FlickrFetcher.h"
 
 @implementation PhotosTableViewController
@@ -18,10 +18,21 @@
        inManagedObjectContext: (NSManagedObjectContext *)context
 {
     if (self = [super initWithStyle:UITableViewStylePlain]) {
+        NSArray *aSortDescriptor;
+        
         NSFetchRequest *request = [[NSFetchRequest alloc] init];
         request.entity = [NSEntityDescription entityForName: @"Photo"
                                      inManagedObjectContext:context];
-        request.sortDescriptors = sortDescriptor;
+        if (sortDescriptor) {
+            aSortDescriptor = sortDescriptor;
+        } else {
+            aSortDescriptor = [NSArray arrayWithObject:
+                               [NSSortDescriptor sortDescriptorWithKey:@"title"
+                                                             ascending:YES
+                                                              selector:@selector(caseInsensitiveCompare:)]];
+        }
+        
+        request.sortDescriptors = aSortDescriptor;
         request.predicate = predicate;
         request.fetchBatchSize = 20;
         

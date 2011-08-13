@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "TopPlacesViewController.h"
+#import "PhotosTableViewController.h"
 
 @implementation AppDelegate
 
@@ -18,6 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    UITabBarItem *tabItem = nil;
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -30,14 +33,27 @@
     
     // Recent
     
+    PhotosTableViewController *recentPhotosTVC = [[PhotosTableViewController alloc] 
+                                                  initWithPhotoPredicate:nil 
+                                                  withSortDescriptor:nil 
+                                                  inManagedObjectContext:self.managedObjectContext];
+    tabItem = [[UITabBarItem alloc] initWithTabBarSystemItem: UITabBarSystemItemMostRecent tag: 0];
+    recentPhotosTVC.tabBarItem = tabItem;
+    recentPhotosTVC.title = @"Most Recent";
+    [tabItem release];
+    
+    UINavigationController *recentPhotosNavController = [[UINavigationController alloc] init];
+    [recentPhotosNavController pushViewController: recentPhotosTVC animated:NO];
+    [recentPhotosTVC release];                                                    
+    
     
     // Favorites
     
     // Tab Bar Controller
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    tabBarController.viewControllers = [NSArray arrayWithObjects:placesNavController, nil];
+    tabBarController.viewControllers = [NSArray arrayWithObjects:placesNavController, recentPhotosNavController, nil];
     
-    [placesNavController release];
+    [placesNavController release]; [recentPhotosNavController release];
 
     
     self.window.rootViewController = tabBarController;
