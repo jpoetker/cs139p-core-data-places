@@ -9,7 +9,7 @@
 #import "FlickrPhotos.h"
 #import "Photo.h"
 
-@interface FlickrPhotos (FlickrPhotos_Photo)
+@interface FlickrPhotos (Photo)
 
 + (Photo *) photoForFlickrPhoto: (id) flickrPhoto 
                         takenAt: (id) place 

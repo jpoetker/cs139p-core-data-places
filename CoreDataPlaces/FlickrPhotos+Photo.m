@@ -6,12 +6,12 @@
 //  Copyright (c) 2011 Medplus, Inc. All rights reserved.
 //
 
-#import "FlickrPhotos+FlickrPhotos_Photo.h"
+#import "FlickrPhotos+Photo.h"
 #import "Photo.h"
 #import "FlickrTopPlaces.h"
-#import "FlickrTopPlaces+FlickrTopPlaces_Place.h"
+#import "FlickrTopPlaces+Place.h"
 
-@implementation FlickrPhotos (FlickrPhotos_Photo)
+@implementation FlickrPhotos (Photo)
 
 + (Photo *) findPhotoByUniqueId: (NSString *) uniqueId 
          inManagedObjectContext: (NSManagedObjectContext *) managedObjectContext
@@ -46,10 +46,10 @@
         photo = [NSEntityDescription insertNewObjectForEntityForName: @"Photo"
                                               inManagedObjectContext: managedObjectContext];
         photo.uniqueId = uniqueId;
-        photo.title = [FlickrPhotos titleForPhoto: photo];
-        photo.descriptionOf = [FlickrPhotos descriptionForPhoto: photo];
-        photo.thumbnailURL = [FlickrPhotos squareThumbnailURLForPhoto: photo];
-        photo.largeImageURL = [FlickrPhotos largeImageURLForPhoto: photo];
+        photo.title = [FlickrPhotos titleForPhoto: flickrPhoto];
+        photo.descriptionOf = [FlickrPhotos descriptionForPhoto: flickrPhoto];
+        photo.thumbnailURL = [FlickrPhotos squareThumbnailURLForPhoto: flickrPhoto];
+        photo.largeImageURL = [FlickrPhotos largeImageURLForPhoto: flickrPhoto];
         photo.lastViewed = [NSDate date];
         photo.favorite = NO;
         photo.place = [FlickrTopPlaces placeForFlickrPlace: place

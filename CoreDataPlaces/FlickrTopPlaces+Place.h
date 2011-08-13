@@ -9,7 +9,7 @@
 #import "FlickrTopPlaces.h"
 #import "Place.h"
 
-@interface FlickrTopPlaces (FlickrTopPlaces_Place)
+@interface FlickrTopPlaces (Place)
 
 + (Place *) placeForFlickrPlace: (id) place
                inManagedContext: (NSManagedObjectContext *) context;

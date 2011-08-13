@@ -6,7 +6,7 @@
 //  Copyright (c) 2011 Medplus, Inc. All rights reserved.
 //
 
-#import "FlickrTopPlaces+FlickrTopPlaces_Place.h"
+#import "FlickrTopPlaces+Place.h"
 
 @implementation FlickrTopPlaces (FlickrTopPlaces_Place)
 
