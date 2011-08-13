@@ -8,7 +8,8 @@
 
 #import "FlickrPhotosTableViewController.h"
 #import "FlickrPhotos.h"
-#import "FlickrPhotos+FlickrPhotos_Photo.h"
+#import "FlickrPhotos+Photo.h"
+#import "PhotoViewController.h"
 
 @implementation FlickrPhotosTableViewController
 
@@ -178,17 +179,33 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
     id flickrPhoto = [photos photoAtIndex:indexPath.row];
     
     Photo *photo = [FlickrPhotos photoForFlickrPhoto:flickrPhoto
                                              takenAt:photos.place
                               inManagedObjectContext:self.managedObjectContext];
+    photo.lastViewed = [NSDate date];
     
-    // TODO
-    // Next move in the photo view controller, modified it to work on a phote
-    // pass the photo, push it onto the navigation controller
+    NSError *error = nil;
+    [self.managedObjectContext save: &error];
     
+    if (error) {
+        NSLog(@"%@", error.localizedFailureReason);
+    }
     
+    // Next create the photo view controller, give it the photo, and push 
+    // it on to the navigation controller
+    PhotoViewController *pvc = [[PhotoViewController alloc] initWithNibName: nil
+                                                                      bundle: nil];
+    pvc.photo = photo;
+    pvc.title = photo.title;
+    
+    [self.navigationController pushViewController: pvc animated: YES];
+    [pvc release];
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 - (void) dealloc 

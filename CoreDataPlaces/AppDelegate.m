@@ -23,7 +23,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     // Configure Top Places View Controller and ui nave controller
-    TopPlacesViewController *topPlaces = [[TopPlacesViewController alloc] initWithStyle: UITableViewStylePlain];
+    TopPlacesViewController *topPlaces = [[TopPlacesViewController alloc] initWithStyle: UITableViewStylePlain inManagedObjectContext: self.managedObjectContext];
     UINavigationController *placesNavController = [[UINavigationController alloc] init];
     [placesNavController pushViewController: topPlaces animated: NO];
     [topPlaces release];
