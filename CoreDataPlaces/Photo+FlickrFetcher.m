@@ -8,20 +8,33 @@
 
 #import "Photo+FlickrFetcher.h"
 #import "FlickrFetcher.h"
+#import "Photo+Cache.h"
 
 @implementation Photo (FlickrFetcher)
 
 - (UIImage *) largeImage
 {
 //    NSLog(@"%@", self);
-    NSData *imageData = [FlickrFetcher imageDataForPhotoWithURLString: self.largeImageURL];
+    NSData *imageData = nil;
+    
+    imageData = [self cachedImageData: FlickrFetcherPhotoFormatLarge];
+    if (!imageData) {
+        NSLog(@"Cache miss for %@", self.title);
+        imageData = [FlickrFetcher imageDataForPhotoWithURLString: self.largeImageURL];
+    }
     return [UIImage imageWithData:imageData];
 }
 
 - (UIImage *) thumbnailImage
 {
     //    NSLog(@"%@", self);
-    NSData *imageData = [FlickrFetcher imageDataForPhotoWithURLString: self.thumbnailURL];
+    NSData *imageData = nil;
+    
+    imageData = [self cachedImageData: FlickrFetcherPhotoFormatSquare];
+    if (!imageData) {
+        imageData = [FlickrFetcher imageDataForPhotoWithURLString: self.thumbnailURL];
+    }
+    
     return [UIImage imageWithData:imageData];
 }
 

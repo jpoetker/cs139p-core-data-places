@@ -40,6 +40,7 @@
 		7EC6553013F6AE580090F785 /* PhotosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6552F13F6AE580090F785 /* PhotosTableViewController.m */; };
 		7ED8CC0413F7F71E00CFAD9C /* FavoritePlacesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8CC0313F7F71E00CFAD9C /* FavoritePlacesTableViewController.m */; };
 		7ED8CC0713F7F84000CFAD9C /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8CC0613F7F83E00CFAD9C /* Place.m */; };
+		7ED8CC0D13F810D700CFAD9C /* Photo+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8CC0C13F810D700CFAD9C /* Photo+Cache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,8 @@
 		7ED8CC0313F7F71E00CFAD9C /* FavoritePlacesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritePlacesTableViewController.m; sourceTree = "<group>"; };
 		7ED8CC0513F7F83D00CFAD9C /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
 		7ED8CC0613F7F83E00CFAD9C /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
+		7ED8CC0B13F810D700CFAD9C /* Photo+Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Photo+Cache.h"; sourceTree = "<group>"; };
+		7ED8CC0C13F810D700CFAD9C /* Photo+Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Photo+Cache.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +182,8 @@
 				7ED8CC0613F7F83E00CFAD9C /* Place.m */,
 				7EC6551F13F5BFF70090F785 /* Photo.h */,
 				7EC6552013F5BFF70090F785 /* Photo.m */,
+				7ED8CC0B13F810D700CFAD9C /* Photo+Cache.h */,
+				7ED8CC0C13F810D700CFAD9C /* Photo+Cache.m */,
 				7EC6552B13F6A02D0090F785 /* Photo+FlickrFetcher.h */,
 				7EC6552C13F6A02D0090F785 /* Photo+FlickrFetcher.m */,
 				7E34F0DD13F594B300F35FB1 /* FlickrTopPlaces.h */,
@@ -389,6 +394,7 @@
 				7EC6553013F6AE580090F785 /* PhotosTableViewController.m in Sources */,
 				7ED8CC0413F7F71E00CFAD9C /* FavoritePlacesTableViewController.m in Sources */,
 				7ED8CC0713F7F84000CFAD9C /* Place.m in Sources */,
+				7ED8CC0D13F810D700CFAD9C /* Photo+Cache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

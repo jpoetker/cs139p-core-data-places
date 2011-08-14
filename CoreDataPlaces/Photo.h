@@ -23,4 +23,7 @@
 @property (nonatomic, retain) Place *place;
 
 - (void) toggleFavoriteStatus;
+
+
+
 @end

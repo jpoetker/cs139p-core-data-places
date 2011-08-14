@@ -9,7 +9,8 @@
 #import "PhotoViewController.h"
 #import "Photo.h"
 #import "Photo+FlickrFetcher.h"
-
+#import "Photo+Cache.h"
+#import "FlickrFetcher.h"
 
 @implementation PhotoViewController
 
@@ -33,6 +34,13 @@
 - (void) toggleFavoriteStatus
 {
     [self.photo toggleFavoriteStatus];
+    if (self.photo.favorite) {
+        [self.photo saveDataToCache: UIImagePNGRepresentation(self.imageView.image) forKind: FlickrFetcherPhotoFormatLarge];
+        [self.photo saveDataToCache: UIImagePNGRepresentation([self.photo thumbnailImage]) forKind: FlickrFetcherPhotoFormatSquare];
+    } else {
+        [self.photo removeFromCache: FlickrFetcherPhotoFormatLarge];
+        [self.photo removeFromCache: FlickrFetcherPhotoFormatSquare];
+    }
 }
 
 - (void)didReceiveMemoryWarning
