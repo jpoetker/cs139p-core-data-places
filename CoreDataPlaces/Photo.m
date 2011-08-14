@@ -23,26 +23,26 @@
 
 - (void) toggleFavoriteStatus
 {
-    self.favorite = [NSNumber numberWithBool: (self.favorite) ? NO : YES];
-    if (self.favorite) {
-        self.place.hasFavorites = self.favorite;
+    NSLog(@"Favorite is %@", self.favorite);
+    
+    self.favorite = [NSNumber numberWithBool: ([self.favorite boolValue]) ? NO : YES];
+    
+     NSLog(@"And now, favorite is %@", self.favorite);
+    
+    if ([self.favorite boolValue]) {
+        self.place.favoriteCount = [NSNumber numberWithInt: [self.place.favoriteCount intValue] + 1];
     } else {
-        BOOL favoriteFound = NO;
-        for(Photo *p in self.place.photos) {
-            if (p.favorite) {
-                favoriteFound = YES;
-                break;
-            }
-        }
-        if (!favoriteFound) {
-            self.place.hasFavorites = self.favorite;
-        }
+        self.place.favoriteCount = [NSNumber numberWithInt: [self.place.favoriteCount intValue] - 1];
     }
+    
+    NSLog(@"Favorite Count for %@ is %@", self.place.city , self.place.favoriteCount);
+    
     NSError *error = nil;
     [self.managedObjectContext save: &error];
     if (error) {
         NSLog(@"%@", error.localizedFailureReason);
     }
+    
 }
 
 @end

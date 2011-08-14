@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "TopPlacesViewController.h"
 #import "PhotosTableViewController.h"
+#import "FavoritePlacesTableViewController.h"
 
 @implementation AppDelegate
 
@@ -57,12 +58,23 @@
     
     
     // Favorites
+    FavoritePlacesTableViewController *favoriteTVC = [[FavoritePlacesTableViewController alloc] 
+                                                     initWithManagedObjectContext: self.managedObjectContext];
+    
+    tabItem = [[UITabBarItem alloc] initWithTabBarSystemItem: UITabBarSystemItemFavorites tag: 0];
+    favoriteTVC.tabBarItem = tabItem;
+    favoriteTVC.title = @"Favorite Places";
+    [tabItem release];
+    
+    UINavigationController *favoritePlacesNavController = [[UINavigationController alloc] init];
+    [favoritePlacesNavController pushViewController: favoriteTVC animated:NO];
+    [favoriteTVC release];    
     
     // Tab Bar Controller
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    tabBarController.viewControllers = [NSArray arrayWithObjects:placesNavController, recentPhotosNavController, nil];
+    tabBarController.viewControllers = [NSArray arrayWithObjects:placesNavController, recentPhotosNavController, favoritePlacesNavController, nil];
     
-    [placesNavController release]; [recentPhotosNavController release];
+    [placesNavController release]; [recentPhotosNavController release]; [favoritePlacesNavController release];
 
     
     self.window.rootViewController = tabBarController;

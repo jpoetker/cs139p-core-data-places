@@ -13,7 +13,7 @@
     <entity name="Place" representedClassName="Place">
         <attribute name="city" optional="YES" attributeType="String"/>
         <attribute name="cityLocation" optional="YES" attributeType="String"/>
-        <attribute name="hasFavorites" optional="YES" attributeType="Boolean"/>
+        <attribute name="favoriteCount" optional="YES" attributeType="Integer 32" defaultValueString="0"/>
         <attribute name="placeId" optional="YES" attributeType="String"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="place" inverseEntity="Photo"/>
     </entity>

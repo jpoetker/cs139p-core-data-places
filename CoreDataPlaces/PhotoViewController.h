@@ -21,5 +21,6 @@
 @property (retain) UIImageView *imageView;
 @property (retain, nonatomic) Photo *photo;
 
+- (void) toggleFavoriteStatus;
 
 @end

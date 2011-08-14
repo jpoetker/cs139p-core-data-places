@@ -22,12 +22,17 @@
         self.photo = nil;
         
         UIBarButtonItem *favoriteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
-                                                                                        target: self.photo 
+                                                                                        target: self
                                                                                         action: @selector(toggleFavoriteStatus)];
         self.navigationItem.rightBarButtonItem = favoriteButton;
         [favoriteButton release];
     }
     return self;
+}
+
+- (void) toggleFavoriteStatus
+{
+    [self.photo toggleFavoriteStatus];
 }
 
 - (void)didReceiveMemoryWarning

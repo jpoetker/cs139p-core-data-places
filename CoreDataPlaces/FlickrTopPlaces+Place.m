@@ -33,8 +33,9 @@
 + (Place *) placeForFlickrPlace: (id) flickrPlace
                inManagedContext: (NSManagedObjectContext *) context
 {
+    
     Place *place = nil;
-    NSString *placeId = [FlickrTopPlaces placeIdFromPlace: place];
+    NSString *placeId = [FlickrTopPlaces placeIdFromPlace: flickrPlace];
     
     place = [FlickrTopPlaces findPlaceByPlaceId: placeId
                          inManagedObjectContext:context];
@@ -43,8 +44,8 @@
         place = [NSEntityDescription insertNewObjectForEntityForName: @"Place"
                                               inManagedObjectContext: context];
         place.placeId = placeId;
-        place.city = [FlickrTopPlaces cityFromPlace: place];
-        place.cityLocation = [FlickrTopPlaces cityLocationFromPlace: place];
+        place.city = [FlickrTopPlaces cityFromPlace: flickrPlace];
+        place.cityLocation = [FlickrTopPlaces cityLocationFromPlace: flickrPlace];
     }
     
     return place;

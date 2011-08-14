@@ -15,7 +15,7 @@
 @dynamic city;
 @dynamic cityLocation;
 @dynamic placeId;
-@dynamic hasFavorites;
+@dynamic favoriteCount;
 @dynamic photos;
 
 @end

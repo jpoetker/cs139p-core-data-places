@@ -16,7 +16,7 @@
 @property (nonatomic, retain) NSString * city;
 @property (nonatomic, retain) NSString * cityLocation;
 @property (nonatomic, retain) NSString * placeId;
-@property (nonatomic, retain) NSNumber * hasFavorites;
+@property (nonatomic, retain) NSNumber * favoriteCount;
 @property (nonatomic, retain) NSSet *photos;
 @end
 
