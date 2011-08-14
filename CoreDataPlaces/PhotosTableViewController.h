@@ -12,6 +12,7 @@
 
 - (id) initInManagedObjectContext:(NSManagedObjectContext *)context;
 - (id) initWithPhotoPredicate: (NSPredicate *) predicate 
-           withSortDescriptor: (NSArray *) sortDescriptor
+           withSortDescriptor: (NSArray *) sortDescriptors
        inManagedObjectContext: (NSManagedObjectContext *)context;
+
 @end

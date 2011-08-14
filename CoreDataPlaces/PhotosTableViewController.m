@@ -31,20 +31,21 @@
         }
         request.predicate = predicate;
         request.fetchBatchSize = 20;
-        
+                
         NSFetchedResultsController *frc = [[NSFetchedResultsController alloc]
                                            initWithFetchRequest:request
                                            managedObjectContext:context
                                            sectionNameKeyPath: nil
-                                           cacheName:@"PhotoCache"];
+                                           cacheName: nil];
         [request release];
+        
         
         self.fetchedResultsController = frc;
         [frc release];
         
         self.titleKey = @"title";
         self.subtitleKey = @"descriptionOf";
-        self.searchKey = @"title";
+//        self.searchKey = @"title";
     }
     return self;
 }
@@ -69,11 +70,9 @@
 - (void)managedObjectSelected:(NSManagedObject *)managedObject
 {
     Photo *photo = (Photo *)managedObject;
-    
-    PhotoViewController *pvc = [[PhotoViewController alloc] initWithNibName: nil
-                                                                     bundle: nil];
+
+    PhotoViewController *pvc = [[PhotoViewController alloc] init];
     pvc.photo = photo;
-    pvc.title = photo.title;
     
     [self.navigationController pushViewController: pvc animated: YES];
     [pvc release];

@@ -21,4 +21,28 @@
 @dynamic uniqueId;
 @dynamic place;
 
+- (void) toggleFavoriteStatus
+{
+    self.favorite = [NSNumber numberWithBool: (self.favorite) ? NO : YES];
+    if (self.favorite) {
+        self.place.hasFavorites = self.favorite;
+    } else {
+        BOOL favoriteFound = NO;
+        for(Photo *p in self.place.photos) {
+            if (p.favorite) {
+                favoriteFound = YES;
+                break;
+            }
+        }
+        if (!favoriteFound) {
+            self.place.hasFavorites = self.favorite;
+        }
+    }
+    NSError *error = nil;
+    [self.managedObjectContext save: &error];
+    if (error) {
+        NSLog(@"%@", error.localizedFailureReason);
+    }
+}
+
 @end

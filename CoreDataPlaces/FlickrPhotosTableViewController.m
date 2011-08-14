@@ -197,10 +197,9 @@
     
     // Next create the photo view controller, give it the photo, and push 
     // it on to the navigation controller
-    PhotoViewController *pvc = [[PhotoViewController alloc] initWithNibName: nil
-                                                                      bundle: nil];
+    //PhotoViewController *pvc = [[PhotoViewController alloc] initWithPhoto: photo];
+    PhotoViewController *pvc = [[PhotoViewController alloc] init];
     pvc.photo = photo;
-    pvc.title = photo.title;
     
     [self.navigationController pushViewController: pvc animated: YES];
     [pvc release];

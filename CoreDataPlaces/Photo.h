@@ -22,4 +22,5 @@
 @property (nonatomic, retain) NSString * uniqueId;
 @property (nonatomic, retain) Place *place;
 
+- (void) toggleFavoriteStatus;
 @end

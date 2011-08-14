@@ -14,12 +14,12 @@
     UIScrollView *scrollView;
     UIImageView *imageView;
     Photo *photo;
+    NSManagedObjectContext *managedObjectContext;
 }
 
 @property (retain) UIScrollView *scrollView;
 @property (retain) UIImageView *imageView;
 @property (retain, nonatomic) Photo *photo;
-
 
 
 @end

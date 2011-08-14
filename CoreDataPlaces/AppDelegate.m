@@ -44,7 +44,7 @@
                                                   withSortDescriptor: [NSArray arrayWithObject: recentlyViewed] 
                                                   inManagedObjectContext:self.managedObjectContext];
     
-    [recentlyViewed release];
+    [recentlyViewed release]; [recentPhotosPredicate release];
     
     tabItem = [[UITabBarItem alloc] initWithTabBarSystemItem: UITabBarSystemItemMostRecent tag: 0];
     recentPhotosTVC.tabBarItem = tabItem;

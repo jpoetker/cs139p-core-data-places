@@ -16,11 +16,16 @@
 @synthesize scrollView, imageView;
 @synthesize photo;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id) init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self = [super initWithNibName:nil bundle:nil]) {
         self.photo = nil;
+        
+        UIBarButtonItem *favoriteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
+                                                                                        target: self.photo 
+                                                                                        action: @selector(toggleFavoriteStatus)];
+        self.navigationItem.rightBarButtonItem = favoriteButton;
+        [favoriteButton release];
     }
     return self;
 }
@@ -37,6 +42,7 @@
 {
     [photo release];
     photo = [aPhoto retain];
+    self.title = photo.title;
     
     UIImage *image = [aPhoto largeImage];
     
@@ -141,6 +147,7 @@
     [scrollView release];
     [photo release];
     [imageView release];
+    [managedObjectContext release];
     [super dealloc];
 }
 @end

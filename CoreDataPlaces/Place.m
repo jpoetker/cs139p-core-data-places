@@ -2,7 +2,7 @@
 //  Place.m
 //  CoreDataPlaces
 //
-//  Created by Jeff Poetker on 8/12/11.
+//  Created by Jeff Poetker on 8/14/11.
 //  Copyright (c) 2011 Medplus, Inc. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 @dynamic city;
 @dynamic cityLocation;
 @dynamic placeId;
+@dynamic hasFavorites;
 @dynamic photos;
 
 @end

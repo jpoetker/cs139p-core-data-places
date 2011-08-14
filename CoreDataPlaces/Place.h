@@ -2,7 +2,7 @@
 //  Place.h
 //  CoreDataPlaces
 //
-//  Created by Jeff Poetker on 8/12/11.
+//  Created by Jeff Poetker on 8/14/11.
 //  Copyright (c) 2011 Medplus, Inc. All rights reserved.
 //
 
@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * city;
 @property (nonatomic, retain) NSString * cityLocation;
 @property (nonatomic, retain) NSString * placeId;
+@property (nonatomic, retain) NSNumber * hasFavorites;
 @property (nonatomic, retain) NSSet *photos;
 @end
 
