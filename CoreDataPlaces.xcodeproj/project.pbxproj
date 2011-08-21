@@ -112,7 +112,7 @@
 		7ECCB7721400842F0009ECC6 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		7ECCB7731400842F0009ECC6 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		7ECCB775140139190009ECC6 /* spacer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spacer.png; sourceTree = "<group>"; };
-		7ECCB77714015B000009ECC6 /* TableViewActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; path = TableViewActivityCell.h; sourceTree = "<group>"; };
+		7ECCB77714015B000009ECC6 /* TableViewActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewActivityCell.h; sourceTree = "<group>"; };
 		7ECCB77814015B010009ECC6 /* TableViewActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewActivityCell.m; sourceTree = "<group>"; };
 		7ED8CC0213F7F71D00CFAD9C /* FavoritePlacesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritePlacesTableViewController.h; sourceTree = "<group>"; };
 		7ED8CC0313F7F71E00CFAD9C /* FavoritePlacesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritePlacesTableViewController.m; sourceTree = "<group>"; };
