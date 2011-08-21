@@ -2,7 +2,7 @@
 //  Photo.m
 //  CoreDataPlaces
 //
-//  Created by Jeff Poetker on 8/12/11.
+//  Created by Jeff Poetker on 8/20/11.
 //  Copyright (c) 2011 Medplus, Inc. All rights reserved.
 //
 
@@ -19,6 +19,7 @@
 @dynamic thumbnailURL;
 @dynamic title;
 @dynamic uniqueId;
+@dynamic thumbnailData;
 @dynamic place;
 
 - (void) toggleFavoriteStatus
@@ -27,7 +28,7 @@
     
     self.favorite = [NSNumber numberWithBool: ([self.favorite boolValue]) ? NO : YES];
     
-     NSLog(@"And now, favorite is %@", self.favorite);
+    NSLog(@"And now, favorite is %@", self.favorite);
     
     if ([self.favorite boolValue]) {
         self.place.favoriteCount = [NSNumber numberWithInt: [self.place.favoriteCount intValue] + 1];
@@ -44,5 +45,4 @@
     }
     
 }
-
 @end

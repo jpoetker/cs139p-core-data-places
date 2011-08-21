@@ -2,7 +2,7 @@
 //  Photo.h
 //  CoreDataPlaces
 //
-//  Created by Jeff Poetker on 8/12/11.
+//  Created by Jeff Poetker on 8/20/11.
 //  Copyright (c) 2011 Medplus, Inc. All rights reserved.
 //
 
@@ -20,10 +20,9 @@
 @property (nonatomic, retain) NSString * thumbnailURL;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * uniqueId;
+@property (nonatomic, retain) NSData * thumbnailData;
 @property (nonatomic, retain) Place *place;
 
 - (void) toggleFavoriteStatus;
-
-
 
 @end

@@ -74,6 +74,14 @@
     PhotoViewController *pvc = [[PhotoViewController alloc] init];
     pvc.photo = photo;
     
+    if ([photo.managedObjectContext hasChanges]) {
+        NSError *error = nil;
+        [photo.managedObjectContext save: &error];
+        if (error) {
+            NSLog(@"%@", error.localizedFailureReason);
+        }
+    }
+    
     [self.navigationController pushViewController: pvc animated: YES];
     [pvc release];
 }

@@ -28,14 +28,20 @@
 - (UIImage *) thumbnailImage
 {
     //    NSLog(@"%@", self);
-    NSData *imageData = nil;
-    
-    imageData = [self cachedImageData: FlickrFetcherPhotoFormatSquare];
-    if (!imageData) {
-        imageData = [FlickrFetcher imageDataForPhotoWithURLString: self.thumbnailURL];
+    if (self.thumbnailData) {
+        return [UIImage imageWithData: self.thumbnailData];
+    } else {
+        NSString *thumbnailUrl = self.thumbnailURL;
+        dispatch_queue_t downloadQueue = dispatch_queue_create("Flickr Thumbnail Download Queue", NULL);
+        dispatch_async(downloadQueue, ^{
+            NSData *imageData = [FlickrFetcher imageDataForPhotoWithURLString: thumbnailUrl];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.thumbnailData = imageData;
+            });
+            
+        });
     }
-    
-    return [UIImage imageWithData:imageData];
+    return nil;
 }
 
 @end

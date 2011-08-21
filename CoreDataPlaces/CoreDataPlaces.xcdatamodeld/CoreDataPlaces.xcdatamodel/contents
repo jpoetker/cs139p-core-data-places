@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="858" systemVersion="11A511" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="858" systemVersion="11B26" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Photo" representedClassName="Photo">
         <attribute name="descriptionOf" optional="YES" attributeType="String"/>
         <attribute name="favorite" optional="YES" attributeType="Boolean"/>
         <attribute name="largeImageURL" optional="YES" attributeType="String"/>
         <attribute name="lastViewed" optional="YES" attributeType="Date" indexed="YES"/>
+        <attribute name="thumbnailData" optional="YES" attributeType="Binary"/>
         <attribute name="thumbnailURL" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="uniqueId" optional="YES" attributeType="String"/>
@@ -18,7 +19,7 @@
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="place" inverseEntity="Photo"/>
     </entity>
     <elements>
-        <element name="Photo" positionX="-135" positionY="3" width="128" height="165"/>
+        <element name="Photo" positionX="-135" positionY="3" width="128" height="180"/>
         <element name="Place" positionX="160" positionY="192" width="128" height="120"/>
     </elements>
 </model>
