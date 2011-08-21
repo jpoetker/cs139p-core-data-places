@@ -40,6 +40,7 @@
             });
             
         });
+        dispatch_release(downloadQueue);
     }
     return nil;
 }
