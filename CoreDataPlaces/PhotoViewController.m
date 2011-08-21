@@ -14,7 +14,7 @@
 
 @implementation PhotoViewController
 
-@synthesize scrollView, imageView;
+@synthesize scrollView, imageView, activitySpinner;
 @synthesize photo;
 
 - (id) init
@@ -55,15 +55,6 @@
     photo = [aPhoto retain];
     self.title = photo.title;
     
-    UIImage *image = [aPhoto largeImage];
-    
-    UIImageView *uiiv = [[UIImageView alloc] initWithImage: image];
-    self.imageView = uiiv;
-    [uiiv release];
-    
-    [self.scrollView addSubview: self.imageView];
-    
-    self.scrollView.contentSize = imageView.bounds.size;
     [self.view setNeedsDisplay];
 }
 
@@ -103,11 +94,26 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    CGRect zoomRect = [self calculateZoomRectForImageWithBounds: self.imageView.bounds forViewBounds: self.scrollView.bounds];
-    
-    [self.scrollView zoomToRect:zoomRect animated:NO];    
-   
-    self.scrollView.minimumZoomScale = [self calculateMinimumScaleForImageWithBounds: self.imageView.bounds forViewBounds: self.scrollView.bounds];
+    [self.activitySpinner startAnimating];
+    [self.photo processImageDataWithBlock:^(NSData *imageData) {
+		if (self.view.window) {
+            UIImage *image = [UIImage imageWithData: imageData];
+            UIImageView *uiiv = [[UIImageView alloc] initWithImage: image];
+            self.imageView = uiiv;
+            [uiiv release];
+            
+            [self.scrollView addSubview: self.imageView];
+            
+            self.scrollView.contentSize = imageView.bounds.size;
+            
+            CGRect zoomRect = [self calculateZoomRectForImageWithBounds: self.imageView.bounds forViewBounds: self.scrollView.bounds];
+            
+            [self.scrollView zoomToRect:zoomRect animated:NO];    
+            
+            self.scrollView.minimumZoomScale = [self calculateMinimumScaleForImageWithBounds: self.imageView.bounds forViewBounds: self.scrollView.bounds];
+            [self.activitySpinner stopAnimating];
+        }
+    }];
 }
 
 
@@ -117,14 +123,29 @@
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
-    UIScrollView *sv = [[UIScrollView alloc] initWithFrame: [[UIScreen mainScreen] applicationFrame]];
+    UIView *contentView = [[UIView alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
+    self.view = contentView;
+    [contentView release];
+
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.hidesWhenStopped = YES;
+    //spinner.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+	spinner.center = self.view.center;
+    
+    self.activitySpinner = spinner;
+    [self.view addSubview: spinner];
+    [spinner release];
+    
+    UIScrollView *sv = [[UIScrollView alloc] initWithFrame: self.view.frame];
     sv.minimumZoomScale = 0.3;
     sv.maximumZoomScale = 3.0;
     sv.delegate = self;
     
     self.scrollView = sv;
-    self.view = sv;
+    [self.view addSubview: sv];
     [sv release];
+    
+
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)sender
@@ -159,6 +180,7 @@
     [photo release];
     [imageView release];
     [managedObjectContext release];
+    [activitySpinner release];
     [super dealloc];
 }
 @end

@@ -12,5 +12,6 @@
 
 - (UIImage *) largeImage;
 - (UIImage *) thumbnailImage;
+- (void)processImageDataWithBlock:(void (^)(NSData *imageData))processImage;
 
 @end

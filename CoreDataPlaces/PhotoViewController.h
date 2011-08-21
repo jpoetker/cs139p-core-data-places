@@ -15,11 +15,13 @@
     UIImageView *imageView;
     Photo *photo;
     NSManagedObjectContext *managedObjectContext;
+    UIActivityIndicatorView *activitySpinner;
 }
 
 @property (retain) UIScrollView *scrollView;
 @property (retain) UIImageView *imageView;
 @property (retain, nonatomic) Photo *photo;
+@property (retain) UIActivityIndicatorView *activitySpinner;
 
 - (void) toggleFavoriteStatus;
 

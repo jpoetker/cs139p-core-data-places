@@ -12,6 +12,23 @@
 
 @implementation Photo (FlickrFetcher)
 
+- (void)processImageDataWithBlock:(void (^)(NSData *imageData))processImage
+{
+    NSString *imageUrl = self.largeImageURL;
+    dispatch_queue_t callerQueue = dispatch_get_current_queue();
+    dispatch_queue_t downloadQueue = dispatch_queue_create("Flickr Image Download Queue", NULL);
+    dispatch_async(downloadQueue, ^{
+        NSData *imageData = [self cachedImageData: FlickrFetcherPhotoFormatLarge];
+        if (!imageData) {
+            imageData = [FlickrFetcher imageDataForPhotoWithURLString: imageUrl];
+        }
+        dispatch_async(callerQueue, ^{
+            processImage(imageData); 
+        });
+    });
+    dispatch_release(downloadQueue);
+}
+
 - (UIImage *) largeImage
 {
 //    NSLog(@"%@", self);
