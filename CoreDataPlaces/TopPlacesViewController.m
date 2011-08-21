@@ -40,8 +40,15 @@
 {
     if (!topPlaces) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-        topPlaces = [[FlickrTopPlaces alloc] init];
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        dispatch_queue_t topPlacesQueue = dispatch_queue_create("TopPlaces Queue", NULL);
+        dispatch_async(topPlacesQueue, ^{
+            topPlaces = [[FlickrTopPlaces alloc] init];
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });    
+        });
+        dispatch_release(topPlacesQueue);
     }
     return topPlaces;
 }
