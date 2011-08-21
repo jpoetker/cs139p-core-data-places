@@ -23,6 +23,7 @@
     if (self) {
         self.photos = somePhotos;
         self.managedObjectContext = managedObjectContext;
+        
     }
     return self;
 }
@@ -129,7 +130,36 @@
         cell.textLabel.text = @"Unknown";
         cell.detailTextLabel.text = nil;
     }
-    cell.imageView.image = [FlickrPhotos squareThumbnailForPhoto:photo];
+    
+    NSData *imageData = [FlickrPhotos thumbnailDataOf: photo];
+    if (!imageData) {
+        UIActivityIndicatorView *spinner = spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        spinner.hidesWhenStopped = YES;
+        
+        
+        UIImage *tempSpacer = [UIImage imageNamed:@"spacer"];
+        
+        UIGraphicsBeginImageContext(spinner.frame.size);
+        
+        [tempSpacer drawInRect:CGRectMake(0,0,spinner.frame.size.width, spinner.frame.size.height)];
+        UIImage *spacer = UIGraphicsGetImageFromCurrentImageContext();
+        
+        UIGraphicsEndImageContext();
+        
+        cell.imageView.image = spacer;
+        [cell.imageView addSubview: spinner];
+        [spinner startAnimating];
+    
+        imageData = [FlickrPhotos squareThumbnailForPhoto: photo usingBlock: ^(NSData *imageData) {
+            if (imageData && self.view.window) {
+                [self.tableView reloadRowsAtIndexPaths: [NSArray arrayWithObject: indexPath] withRowAnimation:  UITableViewRowAnimationFade];
+            }
+            [spinner stopAnimating];
+        }];
+        [spinner release];
+    } else {
+        cell.imageView.image = [UIImage imageWithData: imageData];
+    }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;

@@ -13,6 +13,8 @@
 @interface FlickrPhotos() 
 + (NSDictionary *) castToDictionaryOrNil: (id) photo;
 + (NSString *) property: (NSString *) photoProperty of: (id) photo;
++ (void) setThumbnailData: (NSData *) imageData for: (id) photo;
+
 //+ (NSMutableArray *) loadRecentlyViewedPhotos;
 @end
 
@@ -46,7 +48,7 @@
 
 - (id) photoAtIndex:(NSUInteger)index
 {
-    return [[[photos objectAtIndex:index] copy] autorelease];
+    return [photos objectAtIndex:index];
 }
 
 - (void) dealloc
@@ -117,13 +119,29 @@
     return [[[FlickrPhotos castToDictionaryOrNil: photo] valueForKey: @"description"] valueForKey: @"_content"];
 }
 
-+ (UIImage *)squareThumbnailForPhoto:(id)photo
++ (NSData *)squareThumbnailForPhoto:(id)photo usingBlock: (void (^)(NSData *imageData))procesImage
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES; 
-    UIImage *image = [[[UIImage alloc] initWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:[FlickrPhotos castToDictionaryOrNil: photo] format:FlickrFetcherPhotoFormatSquare]] autorelease];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    NSData *imageData = [FlickrPhotos thumbnailDataOf: photo];
+    if (!imageData) {
+        dispatch_queue_t callerQueue = dispatch_get_current_queue();
+        dispatch_queue_t downloadQueue = dispatch_queue_create("Thumbnail Download Queue", NULL);
+        dispatch_async(downloadQueue, ^{
+            [FlickrPhotos setThumbnailData:
+             [FlickrFetcher imageDataForPhotoWithFlickrInfo:[FlickrPhotos castToDictionaryOrNil: photo] format:
+              FlickrFetcherPhotoFormatSquare]
+                                       for: photo ];
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            dispatch_async(callerQueue, ^{
+                procesImage([FlickrPhotos thumbnailDataOf:photo]);
+            });
+        });
+        dispatch_release(downloadQueue);
+    }
+//    UIImage *image = [[[UIImage alloc] initWithData:[FlickrFetcher imageDataForPhotoWithFlickrInfo:[FlickrPhotos castToDictionaryOrNil: photo] format:FlickrFetcherPhotoFormatSquare]] autorelease];
+//    
     
-    return image;
+    return imageData;
 }
 
 + (NSString *) squareThumbnailURLForPhoto: (id) photo
@@ -140,6 +158,16 @@
     return [FlickrFetcher urlStringForPhotoWithFlickrInfo: [FlickrPhotos castToDictionaryOrNil: photo]
                                                    format: FlickrFetcherPhotoFormatLarge];
 }
+
+
++ (NSData *) thumbnailDataOf: (id) photo {
+    return [[FlickrPhotos castToDictionaryOrNil: photo] objectForKey: @"thumbnailImageData"];
+}
+
++ (void) setThumbnailData: (NSData *) imageData for: (id) photo {
+    [[FlickrPhotos castToDictionaryOrNil: photo] setValue: imageData forKey: @"thumbnailImageData"];
+}
+
 @end
 
 
