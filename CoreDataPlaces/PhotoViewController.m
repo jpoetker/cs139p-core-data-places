@@ -95,6 +95,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.activitySpinner startAnimating];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
     [self.photo processImageDataWithBlock:^(NSData *imageData) {
 		if (self.view.window) {
             UIImage *image = [UIImage imageWithData: imageData];
@@ -112,6 +114,7 @@
             
             self.scrollView.minimumZoomScale = [self calculateMinimumScaleForImageWithBounds: self.imageView.bounds forViewBounds: self.scrollView.bounds];
             [self.activitySpinner stopAnimating];
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         }
     }];
 }
