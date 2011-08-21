@@ -10,6 +10,7 @@
 #import "FlickrPhotos.h"
 #import "FlickrPhotos+Photo.h"
 #import "PhotoViewController.h"
+#import "TableViewActivityCell.h"
 
 @implementation FlickrPhotosTableViewController
 
@@ -105,14 +106,36 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Photo";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-    }
+    static NSString *CellIdentifierWithThumb = @"PhotoWithThumb";
+    static NSString *CellIdentifierWaiting = @"CellWaiting";
     
     id photo = [photos photoAtIndex: indexPath.row];
+    UITableViewCell *cell = nil;
+    
+    NSData *imageData = [FlickrPhotos thumbnailDataOf: photo];
+    if (imageData) {
+        cell  = [tableView dequeueReusableCellWithIdentifier:CellIdentifierWithThumb];
+        if (cell == nil) {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifierWithThumb] autorelease];
+        }
+        cell.imageView.image = [UIImage imageWithData: imageData];
+    } else {
+        cell  = [tableView dequeueReusableCellWithIdentifier:CellIdentifierWaiting];
+        
+        if (cell == nil) {
+            cell = [[[TableViewActivityCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifierWaiting] autorelease];
+        }
+        
+        [((TableViewActivityCell *) cell).spinner startAnimating];
+        imageData = [FlickrPhotos squareThumbnailForPhoto: photo usingBlock: ^(NSData *imageData) {
+            if (imageData && self.view.window) {
+                [self.tableView reloadRowsAtIndexPaths: [NSArray arrayWithObject: indexPath] withRowAnimation:  UITableViewRowAnimationFade];
+            }
+            [((TableViewActivityCell *) cell).spinner stopAnimating];
+        }];
+    }
+
+    
     NSString *title = [FlickrPhotos titleForPhoto:photo];
     NSString *description = [FlickrPhotos descriptionForPhoto:photo];
     
@@ -130,36 +153,7 @@
         cell.textLabel.text = @"Unknown";
         cell.detailTextLabel.text = nil;
     }
-    
-    NSData *imageData = [FlickrPhotos thumbnailDataOf: photo];
-    if (!imageData) {
-        UIActivityIndicatorView *spinner = spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        spinner.hidesWhenStopped = YES;
-        
-        
-        UIImage *tempSpacer = [UIImage imageNamed:@"spacer"];
-        
-        UIGraphicsBeginImageContext(spinner.frame.size);
-        
-        [tempSpacer drawInRect:CGRectMake(0,0,spinner.frame.size.width, spinner.frame.size.height)];
-        UIImage *spacer = UIGraphicsGetImageFromCurrentImageContext();
-        
-        UIGraphicsEndImageContext();
-        
-        cell.imageView.image = spacer;
-        [cell.imageView addSubview: spinner];
-        [spinner startAnimating];
-    
-        imageData = [FlickrPhotos squareThumbnailForPhoto: photo usingBlock: ^(NSData *imageData) {
-            if (imageData && self.view.window) {
-                [self.tableView reloadRowsAtIndexPaths: [NSArray arrayWithObject: indexPath] withRowAnimation:  UITableViewRowAnimationFade];
-            }
-            [spinner stopAnimating];
-        }];
-        [spinner release];
-    } else {
-        cell.imageView.image = [UIImage imageWithData: imageData];
-    }
+
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;

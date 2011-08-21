@@ -39,6 +39,7 @@
 		7EC6553013F6AE580090F785 /* PhotosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6552F13F6AE580090F785 /* PhotosTableViewController.m */; };
 		7ECCB7741400842F0009ECC6 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCB7731400842F0009ECC6 /* Photo.m */; };
 		7ECCB776140139190009ECC6 /* spacer.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ECCB775140139190009ECC6 /* spacer.png */; };
+		7ECCB77914015B020009ECC6 /* TableViewActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ECCB77814015B010009ECC6 /* TableViewActivityCell.m */; };
 		7ED8CC0413F7F71E00CFAD9C /* FavoritePlacesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8CC0313F7F71E00CFAD9C /* FavoritePlacesTableViewController.m */; };
 		7ED8CC0713F7F84000CFAD9C /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8CC0613F7F83E00CFAD9C /* Place.m */; };
 		7ED8CC0D13F810D700CFAD9C /* Photo+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8CC0C13F810D700CFAD9C /* Photo+Cache.m */; };
@@ -111,6 +112,8 @@
 		7ECCB7721400842F0009ECC6 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		7ECCB7731400842F0009ECC6 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		7ECCB775140139190009ECC6 /* spacer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spacer.png; sourceTree = "<group>"; };
+		7ECCB77714015B000009ECC6 /* TableViewActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; path = TableViewActivityCell.h; sourceTree = "<group>"; };
+		7ECCB77814015B010009ECC6 /* TableViewActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewActivityCell.m; sourceTree = "<group>"; };
 		7ED8CC0213F7F71D00CFAD9C /* FavoritePlacesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritePlacesTableViewController.h; sourceTree = "<group>"; };
 		7ED8CC0313F7F71E00CFAD9C /* FavoritePlacesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritePlacesTableViewController.m; sourceTree = "<group>"; };
 		7ED8CC0513F7F83D00CFAD9C /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
@@ -206,6 +209,8 @@
 				7E34F0DB13F5946E00F35FB1 /* TopPlacesViewController.m */,
 				7EC6552813F69E640090F785 /* PhotoViewController.h */,
 				7EC6552913F69E640090F785 /* PhotoViewController.m */,
+				7ECCB77714015B000009ECC6 /* TableViewActivityCell.h */,
+				7ECCB77814015B010009ECC6 /* TableViewActivityCell.m */,
 				7E34F08F13F58D4900F35FB1 /* Supporting Files */,
 			);
 			path = CoreDataPlaces;
@@ -399,6 +404,7 @@
 				7ED8CC0713F7F84000CFAD9C /* Place.m in Sources */,
 				7ED8CC0D13F810D700CFAD9C /* Photo+Cache.m in Sources */,
 				7ECCB7741400842F0009ECC6 /* Photo.m in Sources */,
+				7ECCB77914015B020009ECC6 /* TableViewActivityCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
